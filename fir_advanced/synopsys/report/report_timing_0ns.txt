@@ -1,0 +1,71 @@
+Information: Updating design information... (UID-85)
+Warning: There are infeasible paths detected in your design that were ignored during optimization. Please run 'report_timing -attributes' and/or 'create_qor_snapshot/query_qor_snapshot -infeasible_paths' to identify these paths.  (OPT-1721)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : Fir
+Version: O-2018.06-SP4
+Date   : Tue Oct 20 11:34:39 2020
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: B2[0] (input port clocked by MY_CLK)
+  Endpoint: Fir_sub_3k/Pipe_mpy_2/reg_out_reg[4]
+            (rising edge-triggered flip-flop clocked by MY_CLK)
+  Path Group: MY_CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Fir                5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock MY_CLK (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    0.50       0.50 f
+  B2[0] (in)                                              0.00       0.50 f
+  Fir_sub_3k/B2[0] (Fir_substructure_2)                   0.00       0.50 f
+  Fir_sub_3k/Mpy_2/mpy1[0] (Multiplier_24)                0.00       0.50 f
+  Fir_sub_3k/Mpy_2/mult_18/a[0] (Multiplier_24_DW_mult_tc_1)
+                                                          0.00       0.50 f
+  Fir_sub_3k/Mpy_2/mult_18/U395/Z (BUF_X1)                0.06       0.56 f
+  Fir_sub_3k/Mpy_2/mult_18/U338/ZN (OR2_X1)               0.06       0.62 f
+  Fir_sub_3k/Mpy_2/mult_18/U336/ZN (OAI22_X1)             0.06       0.68 r
+  Fir_sub_3k/Mpy_2/mult_18/U256/ZN (AND2_X1)              0.05       0.73 r
+  Fir_sub_3k/Mpy_2/mult_18/U115/S (FA_X1)                 0.11       0.84 f
+  Fir_sub_3k/Mpy_2/mult_18/U114/S (FA_X1)                 0.14       0.99 r
+  Fir_sub_3k/Mpy_2/mult_18/U445/ZN (NOR2_X1)              0.03       1.02 f
+  Fir_sub_3k/Mpy_2/mult_18/U443/ZN (OAI21_X1)             0.04       1.06 r
+  Fir_sub_3k/Mpy_2/mult_18/U259/ZN (INV_X1)               0.02       1.08 f
+  Fir_sub_3k/Mpy_2/mult_18/U245/ZN (AND2_X1)              0.05       1.13 f
+  Fir_sub_3k/Mpy_2/mult_18/U439/ZN (OAI21_X1)             0.05       1.18 r
+  Fir_sub_3k/Mpy_2/mult_18/U389/ZN (XNOR2_X1)             0.06       1.23 r
+  Fir_sub_3k/Mpy_2/mult_18/product[12] (Multiplier_24_DW_mult_tc_1)
+                                                          0.00       1.23 r
+  Fir_sub_3k/Mpy_2/product[4] (Multiplier_24)             0.00       1.23 r
+  Fir_sub_3k/Pipe_mpy_2/reg_in[4] (Reg_39)                0.00       1.23 r
+  Fir_sub_3k/Pipe_mpy_2/U10/ZN (NAND2_X1)                 0.03       1.26 f
+  Fir_sub_3k/Pipe_mpy_2/U11/ZN (OAI21_X1)                 0.03       1.29 r
+  Fir_sub_3k/Pipe_mpy_2/reg_out_reg[4]/D (DFFR_X1)        0.01       1.30 r
+  data arrival time                                                  1.30
+
+  clock MY_CLK (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  clock uncertainty                                      -0.07      -0.07
+  Fir_sub_3k/Pipe_mpy_2/reg_out_reg[4]/CK (DFFR_X1)       0.00      -0.07 r
+  library setup time                                     -0.03      -0.10
+  data required time                                                -0.10
+  --------------------------------------------------------------------------
+  data required time                                                -0.10
+  data arrival time                                                 -1.30
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -1.41
+
+
+1

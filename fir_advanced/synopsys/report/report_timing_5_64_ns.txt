@@ -1,0 +1,80 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : Fir
+Version: O-2018.06-SP4
+Date   : Tue Oct 20 11:48:56 2020
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: B0[1] (input port clocked by MY_CLK)
+  Endpoint: Fir_sub_3k1/Pipe_mpy_0/reg_out_reg[6]
+            (rising edge-triggered flip-flop clocked by MY_CLK)
+  Path Group: MY_CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Fir                5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock MY_CLK (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  input external delay                                    0.50       0.50 f
+  B0[1] (in)                                              0.00       0.50 f
+  Fir_sub_3k1/B0[1] (Fir_substructure_1)                  0.00       0.50 f
+  Fir_sub_3k1/Mpy_0/mpy1[1] (Multiplier_17)               0.00       0.50 f
+  Fir_sub_3k1/Mpy_0/mult_18/a[1] (Multiplier_17_DW_mult_tc_0)
+                                                          0.00       0.50 f
+  Fir_sub_3k1/Mpy_0/mult_18/U246/Z (XOR2_X1)              0.10       0.60 f
+  Fir_sub_3k1/Mpy_0/mult_18/U158/ZN (INV_X1)              0.07       0.67 r
+  Fir_sub_3k1/Mpy_0/mult_18/U244/ZN (NAND2_X1)            0.08       0.76 f
+  Fir_sub_3k1/Mpy_0/mult_18/U187/ZN (OAI22_X1)            0.07       0.83 r
+  Fir_sub_3k1/Mpy_0/mult_18/U37/S (HA_X1)                 0.05       0.88 f
+  Fir_sub_3k1/Mpy_0/mult_18/U216/ZN (AOI222_X1)           0.11       0.99 r
+  Fir_sub_3k1/Mpy_0/mult_18/U166/ZN (INV_X1)              0.03       1.02 f
+  Fir_sub_3k1/Mpy_0/mult_18/U215/ZN (AOI222_X1)           0.09       1.11 r
+  Fir_sub_3k1/Mpy_0/mult_18/U165/ZN (INV_X1)              0.03       1.14 f
+  Fir_sub_3k1/Mpy_0/mult_18/U214/ZN (AOI222_X1)           0.09       1.23 r
+  Fir_sub_3k1/Mpy_0/mult_18/U156/ZN (INV_X1)              0.03       1.26 f
+  Fir_sub_3k1/Mpy_0/mult_18/U213/ZN (AOI222_X1)           0.09       1.35 r
+  Fir_sub_3k1/Mpy_0/mult_18/U155/ZN (INV_X1)              0.03       1.38 f
+  Fir_sub_3k1/Mpy_0/mult_18/U212/ZN (AOI222_X1)           0.09       1.47 r
+  Fir_sub_3k1/Mpy_0/mult_18/U164/ZN (INV_X1)              0.03       1.50 f
+  Fir_sub_3k1/Mpy_0/mult_18/U8/CO (FA_X1)                 0.09       1.59 f
+  Fir_sub_3k1/Mpy_0/mult_18/U7/CO (FA_X1)                 0.09       1.68 f
+  Fir_sub_3k1/Mpy_0/mult_18/U6/CO (FA_X1)                 0.09       1.77 f
+  Fir_sub_3k1/Mpy_0/mult_18/U5/CO (FA_X1)                 0.09       1.86 f
+  Fir_sub_3k1/Mpy_0/mult_18/U4/CO (FA_X1)                 0.09       1.95 f
+  Fir_sub_3k1/Mpy_0/mult_18/U3/CO (FA_X1)                 0.09       2.04 f
+  Fir_sub_3k1/Mpy_0/mult_18/U2/S (FA_X1)                  0.13       2.17 r
+  Fir_sub_3k1/Mpy_0/mult_18/product[14] (Multiplier_17_DW_mult_tc_0)
+                                                          0.00       2.17 r
+  Fir_sub_3k1/Mpy_0/product[6] (Multiplier_17)            0.00       2.17 r
+  Fir_sub_3k1/Pipe_mpy_0/reg_in[6] (Reg_27)               0.00       2.17 r
+  Fir_sub_3k1/Pipe_mpy_0/U3/ZN (NAND2_X1)                 0.03       2.20 f
+  Fir_sub_3k1/Pipe_mpy_0/U2/ZN (OAI21_X1)                 0.03       2.23 r
+  Fir_sub_3k1/Pipe_mpy_0/reg_out_reg[6]/D (DFFR_X1)       0.01       2.24 r
+  data arrival time                                                  2.24
+
+  clock MY_CLK (rise edge)                                5.64       5.64
+  clock network delay (ideal)                             0.00       5.64
+  clock uncertainty                                      -0.07       5.57
+  Fir_sub_3k1/Pipe_mpy_0/reg_out_reg[6]/CK (DFFR_X1)      0.00       5.57 r
+  library setup time                                     -0.03       5.54
+  data required time                                                 5.54
+  --------------------------------------------------------------------------
+  data required time                                                 5.54
+  data arrival time                                                 -2.24
+  --------------------------------------------------------------------------
+  slack (MET)                                                        3.30
+
+
+1

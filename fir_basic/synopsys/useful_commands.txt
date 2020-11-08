@@ -1,0 +1,57 @@
+USEFUL COMMANDS ARE LISTED IN THIS FILE
+
+---------------------------------------------------------------------
+
+SYNOPSYS DESIGN COMPILER
+
+analyze -f vhdl -lib WORK ../src/FF.vhd
+analyze -f vhdl -lib WORK ../src/Reg.vhd
+analyze -f vhdl -lib WORK ../src/Adder.vhd
+analyze -f vhdl -lib WORK ../src/Multiplier.vhd
+analyze -f vhdl -lib WORK ../src/Fir_substructure.vhd
+analyze -f vhdl -lib WORK ../src/Fir.vhd
+
+set power_preserve_rtl_hier_names true
+elaborate Fir -arch Behavior -lib work
+uniquify
+link
+
+create_clock -name MY_CLK -period 5.64 CLK
+set_dont_touch_network MY_CLK
+set_clock_uncertainty 0.07 [get_clocks MY_CLK]
+set_input_delay 0.5 -max -clock MY_CLK [remove_from_collection [all_inputs] CLK]
+set_output_delay 0.5 -max -clock MY_CLK [all_outputs]
+
+set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
+set_load $OLOAD [all_outputs]
+
+compile
+
+report_timing > report/report_timing_5_64_ns.txt
+report_area > report/report_area_5_64_ns.txt
+
+ungroup -all -flatten
+
+change_names -hierarchy -rules verilog
+write_sdf ../netlist/fir.sdf
+write -f verilog -hierarchy -output ../netlist/fir.v
+write_sdc ../netlist/fir.sdc
+
+---------------------------------------------------------------------
+
+MODELSIM/SYNOPSYS FOR BACK-ANNOTATION
+
+vsim -L /software/dk/nangate45/verilog/msim6.2g work.tb_fir
+vsim -L /software/dk/nangate45/verilog/msim6.2g -sdftyp /tb_fir/DUT=fir.sdf work.tb_fir
+vcd file vcd/design.vcd
+vcd add /tb_fir/DUT/*
+
+vcd2saif -input vcd/fir_syn.vcd -output saif/fir_syn.saif
+
+read_verilog -netlist ../netlist/fir.v
+read_saif -input ../netlist/saif/fir_syn.saif -instance tb_fir/DUT -unit ns -scale 1
+create_clock -name MY_CLK -period 5.64 CLK
+
+
+
+
